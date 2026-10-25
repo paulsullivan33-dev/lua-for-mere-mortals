@@ -1,0 +1,33 @@
+site_name: Lua for Mere Mortals
+site_description: A small language that lives inside other programs. Values and tables, functions and closures, metatables, coroutines and patterns, plus LuaRocks libraries and a taste of embedding, all run for real.
+site_url: https://paulsullivan33-dev.github.io/lua-for-mere-mortals/
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What Lua Is: what-lua-is.md
+  - Installing Lua: installing-lua.md
+  - Your First Program: your-first-program.md
+  - Values and Types: values-and-types.md
+  - Control Flow: control-flow.md
+  - Tables: tables.md
+  - Functions: functions.md
+  - Closures: closures.md
+  - Strings and Patterns: strings-and-patterns.md
+  - Metatables and Objects: metatables-and-objects.md
+  - Coroutines: coroutines.md
+  - Modules: modules.md
+  - Errors: errors.md
+  - Libraries and LuaRocks: libraries-and-luarocks.md
+  - Versions and LuaJIT: versions-and-luajit.md
+  - Embedding Lua in C: embedding-lua.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

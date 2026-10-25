@@ -1,0 +1,10 @@
+$ lua5.4 coroutines.lua
+flour
+sugar
+status before:	suspended
+  coroutine got:	3	4
+resume returned:	true	7	| status:	suspended
+  coroutine resumed with:	10
+resume returned:	true	20	| status:	dead
+A1 B1 A2 B2 A3 B3 (interleaved by hand)
+(exit 0)

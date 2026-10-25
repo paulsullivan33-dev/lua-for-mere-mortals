@@ -1,0 +1,12 @@
+$ lua5.4 patterns.lua
+15	23
+1234
+qty	3	item	notebooks	price	2.50
+words: the cat sat on the mat 
+cleaned:	a b  c	replacements:	3
+cat|dog
+nil
+abc123
+a.c
+<one>
+(exit 0)

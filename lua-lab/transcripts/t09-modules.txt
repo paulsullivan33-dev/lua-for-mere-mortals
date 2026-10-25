@@ -1,0 +1,10 @@
+$ lua5.4 modules.lua
+area of r=3:	28.274333882308
+circumference of r=3:	18.849555921539
+hypotenuse 3-4:	5.0
+second require is the same table:	true
+module came from:	./geometry.lua
+string.upper:	SHOUTED QUIETLY
+table.concat:	a-b-c
+os.date:	2026-10-25
+(exit 0)

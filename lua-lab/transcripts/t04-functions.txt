@@ -1,0 +1,9 @@
+$ lua5.4 functions.lua
+min	1	max	9
+kept only the first:	1
+average of 2, 4, 9:	5.0
+ops.add(3, 4) =	7
+apply(ops.mul, 3, 4) =	12
+fib(15) =	610
+divide(10, 0):	nil	division by zero
+(exit 0)

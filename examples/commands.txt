@@ -1,0 +1,75 @@
+Lua — the distilled commands and facts
+====================================================================
+Placeholders: <file> is a .lua program; <name> is a module name.
+
+FIRST CONTACT (chapters 2-3)
+--------------------------------------------------------------------
+  lua5.4 -v                        # which Lua, exactly
+  luajit -v                        # LuaJIT's version
+  lua5.4 -e 'print(_VERSION)'      # the language an interpreter speaks
+  lua5.4 <file>                    # run a program
+  lua5.4 -e 'print(2 + 3)'         # run one line, no file
+  lua5.4 -i                        # the interactive prompt
+  lua5.4 -l geometry -e '...'      # load a library first
+  lua5.4 script.lua a b            # args arrive as arg[1], arg[2]
+
+THE SHAPE OF THE LANGUAGE (chapters 4-6)
+--------------------------------------------------------------------
+  type(v)                          # one of the eight types
+  math.type(n)                     # "integer" or "float" (5.3+)
+  7 / 2 = 3.5      7 // 2 = 3      # float vs integer division
+  "10" + 5 = 15                    # strings convert in arithmetic
+  t[k], t.x                        # the same lookup, two spellings
+  #t                               # the array border (mind holes)
+  for i, v in ipairs(t) do ...     # arrays, in order
+  for k, v in pairs(t) do ...      # everything, any order
+
+FUNCTIONS AND CLOSURES (chapters 7-8)
+--------------------------------------------------------------------
+  local function f(a, b) ... end   # local, almost always
+  return a, b                      # multiple returns
+  local x = f()                    # extras drop, missing are nil
+  function f(...)                  # varargs; table.pack(...) keeps n
+  counts[w] = (counts[w] or 0) + 1 # the counting idiom
+
+PATTERNS (chapter 9) — NOT REGEX
+--------------------------------------------------------------------
+  string.find(s, p)                # positions, or nil
+  string.match(s, "(%d+) (%a+)")   # captures
+  string.gmatch(s, "%a+")          # an iterator over matches
+  string.gsub(s, "[,;]", " ")      # substitute; returns count too
+  %d %a %s %w                      # classes (%D negates); no \d, no |
+
+METATABLES (chapter 10)
+--------------------------------------------------------------------
+  setmetatable(t, mt)              # attach behaviour
+  mt.__index = mt                  # the object pattern's key line
+  function C:m(x) ... end          # : defines with self
+  obj:m(x)                         # : calls with self
+
+COROUTINES AND MODULES (chapters 11-12)
+--------------------------------------------------------------------
+  coroutine.wrap(f)                # coroutine as a plain function
+  coroutine.resume(co, ...)        # true + yielded values
+  coroutine.yield(...)             # pause; resume's args come back
+  require("name")                  # load once, cache, return value
+  package.searchpath(n, package.path)  # where would it load from?
+
+ERRORS (chapter 13)
+--------------------------------------------------------------------
+  error("msg")        error("msg", 2)    # level 2 blames the caller
+  local ok, r = pcall(f, a)              # false + message on failure
+  xpcall(f, handler)                     # handler sees the live stack
+  assert(v, "msg")                       # throw if v is nil/false
+
+LIBRARIES (chapter 14)
+--------------------------------------------------------------------
+  luarocks --lua-version=5.4 install --local penlight
+  eval "$(luarocks --lua-version=5.4 path)"   # LUA_PATH and LUA_CPATH
+  luarocks --lua-version=5.4 list --local
+
+EMBEDDING (chapter 16)
+--------------------------------------------------------------------
+  gcc host.c -o host $(pkg-config --cflags --libs lua5.4)
+  luaL_newstate(); luaL_openlibs(L);     # state, standard libraries
+  if (luaL_dostring(L, s) != LUA_OK) ... # check every call

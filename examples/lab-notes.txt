@@ -1,0 +1,82 @@
+The lab — real interpreters, real programs, run in the sandbox
+====================================================================
+
+The lab is Lua as Ubuntu ships it, installed with apt on the
+build machine (an Ubuntu 24.04 sandbox, 2 CPUs, 7.7 GB RAM):
+
+  * lua5.4 5.4.6 (package 5.4.6-3build2), with the development
+    package liblua5.4-dev of the same version.
+  * luajit 2.1 (package 2.1.0+git20231223) — reports its
+    language as Lua 5.1.
+  * luarocks 3.8.0, used with --lua-version=5.4 and --local.
+  * One rock installed for real: penlight 1.15.0, which pulled
+    in luafilesystem 1.9.0 (a C module, compiled in place —
+    gcc and pkg-config were installed alongside the Lua
+    packages).
+  * One C program compiled for real against the system Lua
+    (lua-lab/programs/embed.c), hosting the interpreter.
+
+The transcripts in lua-lab/transcripts/:
+
+  t00  versions of all three tools, and _VERSION from both
+       interpreters.
+  t01  values.lua — the eight types, integer/float behaviour,
+       coercion, truthiness, the array hole. (The program's
+       first draft listed the types in a table beginning with
+       nil and printed nothing; the fix is part of the record
+       and of the Troubleshooting chapter.)
+  t02  tables.lua — array, dictionary, record shapes; pairs
+       and ipairs; reference semantics shown by mutating a book
+       through an alias.
+  t03  control.lua — if/elseif, numeric for both directions,
+       while, repeat, the goto-as-continue idiom, and/or values.
+  t04  functions.lua — multiple returns and dropped extras,
+       varargs with table.pack, functions in a table, fib(15),
+       the nil-plus-message convention.
+  t05  closures.lua — two independent counters, a shared-
+       upvalue account (30 after 50 in, 20 out), a running-
+       totals iterator (5, 15, 30).
+  t06  patterns.lua — find/match/gmatch/gsub; captures from a
+       sample order line; the literal-bar demonstration that
+       patterns have no alternation; the lazy quantifier.
+  t07  metatables.lua — fractions with __add and __tostring
+       (1/2 + 1/3 prints as 5/6), an Account class, and a
+       Savings subclass whose inherited deposit plus interest
+       leaves "J. Chen has 102.0".
+  t08  coroutines.lua — a wrap-based producer; the explicit
+       create/resume/status trace (suspended, suspended, dead);
+       a two-worker round robin printing A1 B1 A2 B2 A3 B3.
+  t09  modules.lua — require of the lab's geometry module,
+       cache identity (second require == first), searchpath
+       answering ./geometry.lua.
+  t10  errors.lua — pcall on good input, on a non-number, on
+       an out-of-range port (error level 2), on a nil index;
+       assert with io.open; an xpcall handler whose report
+       contains a traceback naming the file.
+  t11  interpreter flags: -e, -l, -i fed from a pipe, -E, and
+       LUA_PATH with the ";;" default marker.
+  t12  the two interpreters side by side: integer division
+       parses on 5.4 and not on LuaJIT; math.type present and
+       absent; the 2^53 equality that differs; bitwise
+       operators vs the bit library; <const> accepted and
+       rejected; string.format %d on a whole float.
+  t13  the luarocks install of penlight and its list output.
+  t14  penlight-demo.lua — pl.List sorted/mapped/filtered/
+       counted output, pl.pretty printing, pl.tablex merge.
+  t15  embed.c compiled with pkg-config flags and run: Lua
+       sums 1..10, calls the C function, C reads 42 back.
+  t16  wordcount.lua — the word-frequency recipe; "the" 4.
+  t17  read-settings.lua — a Lua configuration file loaded
+       with dofile, validated, and printed back.
+
+What the sandbox shaped: nothing about the language itself —
+Lua needs no namespaces, devices or privileges, so every
+language claim in the guide was run. The constraints were
+about the room, not the subject: memory was tight (the machine
+was shared with other builds), so the lab kept to the small
+interpreter and one library, and speed was never measured —
+a shared, loaded box produces timings that are fiction, and
+the guide claims none. Installing on Windows and macOS, and
+Lua inside its famous hosts, are documented only: the lab had
+one Linux machine and no games, routers or Redis instances to
+script.

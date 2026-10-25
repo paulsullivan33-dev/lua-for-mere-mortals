@@ -1,0 +1,26 @@
+$ lua5.4 -v
+Lua 5.4.6  Copyright (C) 1994-2023 Lua.org, PUC-Rio
+
+$ luajit -v
+LuaJIT 2.1.1703358377 -- Copyright (C) 2005-2023 Mike Pall. https://luajit.org/
+
+$ luarocks --version
+/usr/bin/luarocks 3.8.0
+LuaRocks main command-line interface
+
+
+$ lua5.4 -e "print(_VERSION)"
+Lua 5.4
+
+$ luajit -e "print(_VERSION); print(jit.version)"
+Lua 5.1
+LuaJIT 2.1.1703358377
+
+$ dpkg -l | grep -E "lua5.4|luajit|luarocks" (names and versions)
+liblua5.4-0:amd64 5.4.6-3build2
+liblua5.4-dev:amd64 5.4.6-3build2
+libluajit-5.1-2:amd64 2.1.0+git20231223.c525bcb+dfsg-1ubuntu0.1
+libluajit-5.1-common 2.1.0+git20231223.c525bcb+dfsg-1ubuntu0.1
+lua5.4 5.4.6-3build2
+luajit 2.1.0+git20231223.c525bcb+dfsg-1ubuntu0.1
+luarocks 3.8.0+dfsg1-1

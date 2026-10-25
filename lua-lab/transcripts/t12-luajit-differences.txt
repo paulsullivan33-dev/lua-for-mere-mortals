@@ -1,0 +1,28 @@
+$ lua5.4 -e "print(7 // 2, math.type(7 // 2))"     -- integer division, 5.3+
+3	integer
+
+$ luajit -e "print(7 // 2)"     -- LuaJIT speaks 5.1: this does not parse
+luajit: (command line):1: unexpected symbol near '/'
+
+$ lua5.4 -e "print(math.type)"
+function: 0x5f961ad37790
+$ luajit -e "print(math.type)"    -- no integer subtype, so no math.type
+nil
+
+$ lua5.4 -e "print(5 & 3, 5 | 3, 1 << 4)"       -- native bitwise operators, 5.3+
+1	7	16
+$ luajit -e "local bit = require(\"bit\"); print(bit.band(5,3), bit.bor(5,3), bit.lshift(1,4))"
+1	7	16
+
+$ lua5.4 -e "print(9007199254740993 == 9007199254740992)"   -- exact integers
+false
+$ luajit -e "print(9007199254740993 == 9007199254740992)"   -- doubles: they blur
+true
+$ lua5.4 -e "local x <const> = 5; x = 6"   -- 5.4 variable attributes
+lua5.4: (command line):1: attempt to assign to const variable 'x'
+
+$ luajit -e "local x <const> = 5"          -- 5.1 syntax: does not parse
+luajit: (command line):1: unexpected symbol near '<'
+
+$ lua5.4 -e "print(string.format(\"%d\", 7.0))"  -- floats with whole values format as integers via %d in 5.3+? no:
+7

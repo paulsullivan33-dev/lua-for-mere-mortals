@@ -1,0 +1,23 @@
+$ lua5.4 values.lua
+nil      ->	nil
+boolean  ->	boolean
+number   ->	number	and	number
+string   ->	string
+function ->	function
+table    ->	table
+userdata ->	userdata
+thread   ->	thread
+math.type(42)  =	integer
+math.type(3.5) =	float
+math.type(3.0) =	float
+7 / 2  =	3.5
+7 // 2 =	3
+math.maxinteger + 1 =	-9223372036854775808
+"10" + 5 =	15
+tonumber('3.5') =	3.5
+tostring(42) =	42	string
+0 is true in Lua
+"" (the empty string) is true in Lua
+not nil =	true
+#t with a hole =	3
+(exit 0)

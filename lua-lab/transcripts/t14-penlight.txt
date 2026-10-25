@@ -1,0 +1,23 @@
+$ eval "$(luarocks --lua-version=5.4 path)"
+$ lua5.4 penlight-demo.lua
+scores:	72, 85, 91, 85, 64
+sorted copy:	64, 72, 85, 85, 91
+count of 85s:	2
+mapped (+5):	77, 90, 96, 90, 69
+filtered (>= 80):	85, 91, 85
+pretty record:
+{
+  name = "field notes",
+  pages = 12,
+  tags = {
+    "work",
+    "draft"
+  }
+}
+tablex.merge (b wins):	{
+  x = 1,
+  y = 20,
+  z = 30
+}
+tablex.keys of a:	x, y
+(exit 0)

@@ -1,0 +1,6 @@
+$ lua5.4 read-settings.lua
+title:	Reading Group Notes
+page:	A5	margins:	15
+contributors:	Ana, Ben, Cleo
+settings accepted
+(exit 0)

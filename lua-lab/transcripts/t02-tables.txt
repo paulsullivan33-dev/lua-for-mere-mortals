@@ -1,0 +1,22 @@
+$ lua5.4 tables.lua
+first fruit:	apple
+how many:	3
+now:	4	fig
+sorted:	apple, date, fig, pear, plum
+a pear costs	45
+a plum costs	60
+-- ipairs (array order):
+1	apple
+2	date
+3	fig
+4	pear
+5	plum
+-- pairs (any order):
+apple	30
+pear	45
+fig	90
+plum	60
+The Left Hand of Darkness	by	Le Guin	(1969)
+shelf sees:	1970
+shelf[1] == book:	true
+(exit 0)

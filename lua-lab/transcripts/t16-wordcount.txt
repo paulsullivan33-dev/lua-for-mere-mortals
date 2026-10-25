@@ -1,0 +1,13 @@
+$ lua5.4 wordcount.lua
+the	4
+dog	2
+fox	2
+quick	2
+was	2
+amused	1
+brown	1
+jumps	1
+lazy	1
+not	1
+over	1
+(exit 0)

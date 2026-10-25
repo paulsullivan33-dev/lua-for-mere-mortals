@@ -1,0 +1,11 @@
+$ pkg-config --cflags --libs lua5.4
+-I/usr/include/lua5.4 -llua5.4 
+
+$ gcc embed.c -o embed $(pkg-config --cflags --libs lua5.4)
+(compiled cleanly)
+
+$ ./embed
+Lua computed 1..10 =	55
+[C heard Lua say: hello from inside Lua]
+C read back: answer = 42
+(exit 0)

@@ -1,0 +1,29 @@
+$ luarocks --lua-version=5.4 install --local penlight
+Installing https://luarocks.org/penlight-1.15.0-1.src.rock
+Missing dependencies for penlight 1.15.0-1:
+   luafilesystem (not installed)
+
+penlight 1.15.0-1 depends on luafilesystem (not installed)
+Installing https://luarocks.org/luafilesystem-1.9.0-1.src.rock
+
+luafilesystem 1.9.0-1 depends on lua >= 5.1 (5.4-1 provided by VM)
+gcc -O2 -fPIC -I/usr/include/lua5.4 -c src/lfs.c -o src/lfs.o
+gcc -shared -o lfs.so src/lfs.o
+No existing manifest. Attempting to rebuild...
+luafilesystem 1.9.0-1 is now installed in /home/hatch/.luarocks (license: MIT/X11)
+
+penlight 1.15.0-1 is now installed in /home/hatch/.luarocks (license: MIT/X11)
+
+(exit 0)
+
+$ luarocks --lua-version=5.4 list --local
+
+Rocks installed for Lua 5.4 in /home/hatch/.luarocks
+----------------------------------------------------
+
+luafilesystem
+   1.9.0-1 (installed) - /home/hatch/.luarocks/lib/luarocks/rocks-5.4
+
+penlight
+   1.15.0-1 (installed) - /home/hatch/.luarocks/lib/luarocks/rocks-5.4
+

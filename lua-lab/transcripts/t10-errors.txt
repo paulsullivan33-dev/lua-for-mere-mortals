@@ -1,0 +1,10 @@
+$ lua5.4 errors.lua
+pcall('8080'):	true	8080
+pcall('banana'):	false	errors.lua:10: not a number: banana
+pcall('99999'):	false	port out of range: 99999
+pcall(index nil):	false	errors.lua:29: attempt to index a nil value (field 'integer index')
+assert + io.open opened a file of type:	userdata
+xpcall caught ok =	false
+handled: errors.lua:42: the kettle boiled dry
+traceback mentions this file:	true
+(exit 0)

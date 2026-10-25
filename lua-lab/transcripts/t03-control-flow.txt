@@ -1,0 +1,11 @@
+$ lua5.4 control.lua
+mild
+1..10 sums to	55
+10 7 4 1 (counting down by 3)
+doubling past 100 stops at	128
+repeat ran	3	times
+long word:	maple
+long word:	birch
+anonymous
+yes
+(exit 0)

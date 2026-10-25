@@ -1,0 +1,22 @@
+$ lua5.4 -e "print(2 + 3)"   -- run a line of code, no file
+5
+
+$ lua5.4 args.lua hello world
+arg[0] (the script itself):	args.lua
+arg[1], arg[2]:	hello	world
+arg[-1] (what came before):	lua5.4
+
+$ lua5.4 -l geometry -e "print(geometry.circle_area(1))"   -- -l loads a library first
+3.1415926535898
+
+$ echo "print(6 * 7)" | lua5.4 -i   -- interactive, fed from a pipe
+Lua 5.4.6  Copyright (C) 1994-2023 Lua.org, PUC-Rio
+> print(6 * 7)
+42
+> 
+
+$ lua5.4 -E -e "print(package.path)"   -- -E ignores environment variables
+/usr/local/share/lua/5.4/?.lua;/usr/local/share/lua/5.4/?/init.lua;/usr/local/lib/lua/5.4/?.lua;/usr/local/lib/lua/5.4/?/init.lua;/usr/share/lua/5.4/?.lua;/usr/share/lua/5.4/?/init.lua;./?.lua;./?/init.lua
+
+$ LUA_PATH="./?.lua;;" lua5.4 -e "print(package.path)" | head -c 200
+./?.lua;/usr/local/share/lua/5.4/?.lua;/usr/local/share/lua/5.4/?/init.lua;/usr/local/lib/lua/5.4/?.lua;/usr/local/lib/lua/5.4/?/init.lua;/usr/share/lua/5.4/?.lua;/usr/share/lua/5.4/?/init.lua;./?.lua

@@ -1,0 +1,8 @@
+$ lua5.4 closures.lua
+1	2	3
+101
+after deposit 50, withdraw 20:	30
+after item	1	the total is	5
+after item	2	the total is	15
+after item	3	the total is	30
+(exit 0)
